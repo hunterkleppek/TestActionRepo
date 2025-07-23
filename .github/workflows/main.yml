@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Use custom ADO action
-        uses: hunterkleppek/create-ado-user-story/.github/workflow/main.yml
+        uses: hunterkleppek/create-ado-user-story@main
         with:
           ado-org: 'SECURAInsurance'
           ado-project: 'Suite'
