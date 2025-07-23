@@ -13,3 +13,4 @@ jobs:
           ado-project: 'Suite'
           ado-epic-id: '53326'
           ado-pat: 'BbuG6rH1ONsRvamvlGxEZHELPLIYyvpSyCOVqDW45jzG0u8szD6nJQQJ99BGACAAAAAVUzjgAAASAZDO4bDr'
+          ado-work-item-type: 'User Story'  # Change this if your project uses a different work item type
