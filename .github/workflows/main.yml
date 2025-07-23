@@ -15,3 +15,4 @@ jobs:
           ado-pat: 'BbuG6rH1ONsRvamvlGxEZHELPLIYyvpSyCOVqDW45jzG0u8szD6nJQQJ99BGACAAAAAVUzjgAAASAZDO4bDr'
           ado-work-item-type: 'User Story'  # Change this if your project uses a different work item type
           ado-area: 'Suite\\Integrations - 1'
+          ado-tags: "Innovation Backlog"
