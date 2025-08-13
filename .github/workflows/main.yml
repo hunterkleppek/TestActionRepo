@@ -1,19 +1,33 @@
-name: Test ADO User Story Action
+name: 'Create ADO Work Item via Reusable Workflow'
+
 on:
   issues:
-    types: [opened]
+    types: [opened, edited]
+  workflow_dispatch:
+    inputs:
+      title:
+        description: 'Title of the work item'
+        required: true
+        default: 'New Work Item'
+      description:
+        description: 'Description of the work item'
+        required: false
+        default: ''
+      type:
+        description: 'Type of the work item (e.g., User Story, Task, Bug)'
+        required: true
+        default: 'User Story'
+      ado-organization:
+        description: 'Azure DevOps organization'
+        required: false
+        default: 'SECURAInsurance'
+
 jobs:
-  create-ado-story:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Use custom ADO action
-        uses: hunterkleppek/create-ado-user-story@main
-        with:
-          ado-org: 'SECURAInsurance'
-          ado-project: 'Suite'
-          ado-epic-id: '53326'
-          ado-pat: 'BbuG6rH1ONsRvamvlGxEZHELPLIYyvpSyCOVqDW45jzG0u8szD6nJQQJ99BGACAAAAAVUzjgAAASAZDO4bDr'
-          ado-work-item-type: 'User Story'  # Change this if your project uses a different work item type
-          ado-area: 'Suite\\Integrations - 1'
-          ado-tags: "Innovation Backlog"
-          repository-name: 'TestActionRepo'
+  create-ado-work-item:
+    uses: hunterkleppek/create-ado-user-story/.github/workflows/create-workitem-with-sp.yml@main
+    with:
+      title: ${{ github.repository.name && github.event.issue.title || github.event.inputs.title }}
+      description: ${{ github.event_name == 'issues' && github.event.issue.body || github.event.inputs.description }}
+      type: ${{ github.event.inputs.type || 'User Story' }}
+      ado-organization: ${{ github.event.inputs.ado-organization || 'SECURAInsurance' }}
+    secrets: inherit
