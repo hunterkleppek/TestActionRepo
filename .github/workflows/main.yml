@@ -26,7 +26,7 @@ jobs:
   create-ado-work-item:
     uses: hunterkleppek/create-ado-user-story/.github/workflows/create-workitem-with-sp.yml@main
     with:
-      title: ${{ github.repository.name && github.event.issue.title || github.event.inputs.title }}
+      title: ${{ github.repository.name }} + ${{ github.event.issue.title || github.event.inputs.title }}
       description: ${{ github.event_name == 'issues' && github.event.issue.body || github.event.inputs.description }}
       type: ${{ github.event.inputs.type || 'User Story' }}
       ado-organization: ${{ github.event.inputs.ado-organization || 'SECURAInsurance' }}
