@@ -2,7 +2,7 @@ name: 'Create ADO Work Item via Reusable Workflow'
 
 on:
   issues:
-    types: [opened, edited]
+    types: [opened]
   workflow_dispatch:
     inputs:
       title:
